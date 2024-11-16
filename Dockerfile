@@ -1,31 +1,35 @@
-# Use the official httpd image as the base image
-FROM httpd:2.4
+FROM ubuntu:latest
 
-# Set the working directory for custom files
-WORKDIR /usr/local/apache2
+# Install required packages
+RUN apt-get update && apt-get install -y \
+    apache2 \
+    build-essential \
+    git \
+    gcc \
+    && apt-get clean
+
+# Enable the Apache CGI module
+RUN a2enmod cgi
 
 # Create the CGI directory
-RUN mkdir -p ./cgi-bin
+RUN mkdir -p /var/www/html/cgi-bin
 
-# Copy CGI scripts and set permissions
-COPY main.cpp ./cgi-bin/
-RUN mkdir ./cgi-bin/compiled_output \
-    && apt-get update \
-    && apt-get install -y g++ \
-    && g++ -std=c++17 ./cgi-bin/main.cpp -o ./cgi-bin/compiled_output/main.cgi \
-    && chmod +x ./cgi-bin/compiled_output/main.cgi
+# Clone the repository and compile the CGI script
+RUN git clone https://github.com/apb718/PersonalSite.git /PersonalSite && \
+    g++ /PersonalSite/*.cpp -o /var/www/html/cgi-bin/index.cgi -O3 && \
+    chmod +x /var/www/html/cgi-bin/index.cgi
 
-# Configure httpd to support CGI
-RUN echo "ScriptAlias /cgi-bin/ /usr/local/apache2/cgi-bin/" >> ./conf/httpd.conf \
-    && echo "<Directory \"/usr/local/apache2/cgi-bin/\">" >> ./conf/httpd.conf \
-    && echo "    AllowOverride None" >> ./conf/httpd.conf \
-    && echo "    Options +ExecCGI" >> ./conf/httpd.conf \
-    && echo "    AddHandler cgi-script .cgi" >> ./conf/httpd.conf \
-    && echo "    Require all granted" >> ./conf/httpd.conf \
-    && echo "</Directory>" >> ./conf/httpd.conf
+# Configure Apache to recognize the CGI directory
+RUN echo "ScriptAlias /cgi-bin/ /var/www/html/cgi-bin/" >> /etc/apache2/apache2.conf && \
+    echo "<Directory \"/var/www/html/cgi-bin\">" >> /etc/apache2/apache2.conf && \
+    echo "    AllowOverride None" >> /etc/apache2/apache2.conf && \
+    echo "    Options +ExecCGI" >> /etc/apache2/apache2.conf && \
+    echo "    AddHandler cgi-script .cgi" >> /etc/apache2/apache2.conf && \
+    echo "    Require all granted" >> /etc/apache2/apache2.conf && \
+    echo "</Directory>" >> /etc/apache2/apache2.conf
 
-# Expose the default HTTP port
+# Expose port 80 for HTTP
 EXPOSE 80
 
-# Start the Apache server
-CMD ["httpd-foreground"]
+# Start Apache in the foreground
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
