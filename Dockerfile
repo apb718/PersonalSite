@@ -9,7 +9,8 @@ RUN apt install -y \
     apache2 \
     g++ \
     vim \
-    git 
+    git \
+    cron
 
 RUN apt upgrade 
 RUN apt clean
