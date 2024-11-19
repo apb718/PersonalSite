@@ -1,35 +1,53 @@
-FROM ubuntu:latest
+FROM ubuntu:20.04
 
-# Install required packages
-RUN apt-get update && apt-get install -y \
+# Install necessary packages
+RUN apt update && apt install -y software-properties-common && add-apt-repository universe
+
+
+RUN apt update 
+RUN apt install -y \
     apache2 \
-    build-essential \
-    git \
-    gcc \
-    && apt-get clean
+    g++ \
+    vim \
+    git 
 
-# Enable the Apache CGI module
+RUN apt upgrade 
+RUN apt clean
+
+# Enable CGI module
 RUN a2enmod cgi
 
-# Create the CGI directory
-RUN mkdir -p /var/www/html/cgi-bin
+# Automatically configure Apache for CGI
+RUN echo '<VirtualHost *:8080>' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '    ServerAdmin webmaster@localhost' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '    DocumentRoot /var/www/html' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '    ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '    <Directory "/usr/lib/cgi-bin/">' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '        AllowOverride None' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '        Options +ExecCGI' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '        AddHandler cgi-script .cgi' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '        Require all granted' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '    </Directory>' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '    ErrorLog ${APACHE_LOG_DIR}/error.log' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '    CustomLog ${APACHE_LOG_DIR}/access.log combined' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '</VirtualHost>' >> /etc/apache2/sites-available/000-default.conf
 
-# Clone the repository and compile the CGI script
-RUN git clone https://github.com/apb718/PersonalSite.git /PersonalSite && \
-    g++ /PersonalSite/*.cpp -o /var/www/html/cgi-bin/index.cgi -O3 && \
-    chmod +x /var/www/html/cgi-bin/index.cgi
+# Copy the CGI script to the appropriate directory
+WORKDIR /tmp
+RUN git clone https://github.com/apb718/PersonalSite && \
+        cd PersonalSite && \
+        g++ main.cpp -o index.cgi && \
+        mv index.cgi /usr/lib/cgi-bin/ && \
+        chmod +x /usr/lib/cgi-bin/index.cgi
 
-# Configure Apache to recognize the CGI directory
-RUN echo "ScriptAlias /cgi-bin/ /var/www/html/cgi-bin/" >> /etc/apache2/apache2.conf && \
-    echo "<Directory \"/var/www/html/cgi-bin\">" >> /etc/apache2/apache2.conf && \
-    echo "    AllowOverride None" >> /etc/apache2/apache2.conf && \
-    echo "    Options +ExecCGI" >> /etc/apache2/apache2.conf && \
-    echo "    AddHandler cgi-script .cgi" >> /etc/apache2/apache2.conf && \
-    echo "    Require all granted" >> /etc/apache2/apache2.conf && \
-    echo "</Directory>" >> /etc/apache2/apache2.conf
+# Configure Apache to listen on port 8080
+RUN echo "Listen 8080" >> /etc/apache2/ports.conf
 
-# Expose port 80 for HTTP
-EXPOSE 80
+# Expose port 8080
+EXPOSE 8080
 
-# Start Apache in the foreground
+# Start Apache web server
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]

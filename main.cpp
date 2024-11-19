@@ -1,9 +1,9 @@
 #include <iostream>
-using namespace std;
+#include <cstdlib>
 
 int main() {
-    // Output the required CGI headers
-    cout << "Content-Type: text/html\r\n\r\n";
-    cout << "<html><body><h1>Hello, CGI World!</h1></body></html>";
+    std::cout << "Content-type: text/html\r\n\r\n";
+    std::cout << "<html><body><h1>Hello from C++ CGI!</h1></body></html>";
+        std::cout << "<h2>This is a change for testing</h2>";
     return 0;
 }
