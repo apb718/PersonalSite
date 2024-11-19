@@ -37,10 +37,10 @@ RUN echo '<VirtualHost *:8080>' >> /etc/apache2/sites-available/000-default.conf
 
 # Copy the CGI script to the appropriate directory
 WORKDIR /tmp
+ARG CACHE_BUST=1
 RUN git clone https://github.com/apb718/PersonalSite && \
         cd PersonalSite && \
-        git pull
-RUN g++ main.cpp -o index.cgi && \
+        g++ main.cpp -o index.cgi && \
         mv index.cgi /usr/lib/cgi-bin/ && \
         chmod +x /usr/lib/cgi-bin/index.cgi
 
