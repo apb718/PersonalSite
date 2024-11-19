@@ -38,11 +38,13 @@ RUN echo '<VirtualHost *:8080>' >> /etc/apache2/sites-available/000-default.conf
 # Copy the CGI script to the appropriate directory
 WORKDIR /tmp
 ARG CACHE_BUST=1
-RUN git clone https://github.com/apb718/PersonalSite && \
-        cd PersonalSite && \
-        g++ main.cpp -o index.cgi && \
-        mv index.cgi /usr/lib/cgi-bin/ && \
-        chmod +x /usr/lib/cgi-bin/index.cgi
+
+RUN rm -rf PersonalSite && \
+    git clone https://github.com/apb718/PersonalSite.git && \
+    cd PersonalSite && \
+    g++ main.cpp -o index.cgi && \
+    mv index.cgi /usr/lib/cgi-bin/ && \
+    chmod +x /usr/lib/cgi-bin/index.cgi
 
 # Configure Apache to listen on port 8080
 RUN echo "Listen 8080" >> /etc/apache2/ports.conf
