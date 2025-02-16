@@ -2,7 +2,7 @@
 	import Logo from "$lib/assets/icons/ABLogo-y.svg";
 </script>
 
-<nav class="bg-apb-b flex items-center justify-between px-8 py-4">
+<nav class="bg-apb-b flex items-center justify-between px-32 py-4 ">
 	<!-- Logo -->
 	<img class="h-16 w-auto rounded-md" src="{Logo}" alt="AB Logo"/>
 
