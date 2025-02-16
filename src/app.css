@@ -1,1 +1,8 @@
 @import 'tailwindcss';
+
+@theme {
+    --color-apb-y: #E6FF2B;
+    --color-apb-b: #0B4550;
+    --color-apb-w: #F9F7F2;
+    --color-apb-g: #898A8D;
+}

@@ -1,1 +1,6 @@
-<h1 class="bg-red-950">GPT</h1>
+<footer>
+	<!--Location-->
+
+	<!--Contact-->
+
+</footer>
