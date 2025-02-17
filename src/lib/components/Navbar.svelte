@@ -4,7 +4,7 @@
 
 <nav class="bg-apb-b flex items-center justify-between px-32 py-4 ">
 	<!-- Logo -->
-	<a href="#">
+	<a href="">
 		<img class="h-16 w-auto rounded-md" src="{Logo}" alt="AB Logo"/>
 	</a>
 	<!-- Navigation Links -->
