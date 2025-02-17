@@ -2,7 +2,10 @@
 	import Portfolio from '$lib/Components/Portfolio.svelte';
 	import About from '$lib/Components/About.svelte';
 	import Contact from '$lib/Components/Contact.svelte';
+	import Interests from '$lib/components/Interests.svelte';
 </script>
+
 <Portfolio />
 <About />
+<Interests />
 <Contact />

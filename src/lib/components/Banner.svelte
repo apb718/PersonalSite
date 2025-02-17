@@ -2,7 +2,7 @@
 	const { imageUrl = '', text = '', alt = ''} = $props();
 </script>
 
-<div class="relative h-[40vh] overflow-hidden">
+<div id="banner" class="relative h-[40vh] overflow-hidden">
 	<img
 		src="{imageUrl}"
 		alt="{alt}"

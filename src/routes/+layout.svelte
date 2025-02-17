@@ -9,6 +9,7 @@
 </script>
 
 <Navbar />
+<!--<div id="big" class="h-10000" style="height: 1000vh">e</div>-->
 <Banner imageUrl={BannerImg} alt="Welcome Banner" text="Welcome" />
 
 {@render children()}
