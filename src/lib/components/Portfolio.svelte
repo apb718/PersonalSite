@@ -1,3 +1,7 @@
+<script lang="ts">
+	import PortfolioItem from "$lib/components/PortfolioItem.svelte"
+</script>
+
 <div id="portfolio" class="">
 
 <!--Chevrons that slide from side to side -->
