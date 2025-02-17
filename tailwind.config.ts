@@ -16,6 +16,11 @@ const config: Config = {
 		},
 		extend: {
 			colors: {
+				"apb-y": "#E6FF2B",
+				"apb-b": "#0B4550",
+				"apb-w": "#F9F7F2",
+				"apb-g": "#898A8D",
+
 				border: "hsl(var(--border) / <alpha-value>)",
 				input: "hsl(var(--input) / <alpha-value>)",
 				ring: "hsl(var(--ring) / <alpha-value>)",
