@@ -12,17 +12,17 @@
 			<h2 class="text-2xl font-bold mb-2">Follow Me</h2>
 			<ul class="flex justify-center space-x-6">
 				<li class="text-2xl transition-transform transform hover:scale-110">
-					<a href="#" aria-label="LinkedIn">
+					<a href="https://www.linkedin.com/in/alec-byrd/"  target="_blank" aria-label="LinkedIn">
 						<iconify-icon icon="mdi:linkedin"></iconify-icon>
 					</a>
 				</li>
 				<li class="text-2xl transition-transform transform hover:scale-110">
-					<a href="#" aria-label="Instagram">
+					<a href="https://www.instagram.com/alec.byrd7/"  target="_blank" aria-label="Instagram">
 						<iconify-icon icon="mdi:instagram"></iconify-icon>
 					</a>
 				</li>
 				<li class="text-2xl transition-transform transform hover:scale-110">
-					<a href="#" aria-label="GitHub">
+					<a href="https://github.com/apb718/" target="_blank" aria-label="GitHub">
 						<iconify-icon icon="mdi:github"></iconify-icon>
 					</a>
 				</li>
