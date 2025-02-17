@@ -9,15 +9,9 @@
 	</a>
 	<!-- Navigation Links -->
 	<ul class="flex space-x-6">
-		<li><a href="#portfolio" class="text-apb-y text-lg font-semibold hover:underline ">Portfolio</a></li>
+		<li><a href="#portfolio" class="text-apb-y text-lg font-semibold hover:underline">Portfolio</a></li>
 		<li><a href="" class="text-apb-y text-lg font-semibold hover:underline">About</a></li>
 		<li><a href="" class="text-apb-y text-lg font-semibold hover:underline">Interests</a></li>
 		<li><a href="" class="text-apb-y text-lg font-semibold hover:underline">Contact</a></li>
 	</ul>
 </nav>
-
-<style>
-    html {
-        scroll-behavior: smooth;
-    }
-</style>
