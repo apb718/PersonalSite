@@ -8,9 +8,16 @@
 	let { children } = $props();
 </script>
 
+<<<<<<< HEAD
 <Navbar />
 <!--<div id="big" class="h-10000" style="height: 1000vh">e</div>-->
 <Banner imageUrl={BannerImg} alt="Welcome Banner" text="Welcome" />
+=======
+
+
+<Navbar />
+<Banner imageUrl={BannerImg} alt="Welcome Banner" text="Welcome"/>
+>>>>>>> origin/main
 
 {@render children()}
 
