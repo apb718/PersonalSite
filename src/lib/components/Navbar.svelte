@@ -15,9 +15,3 @@
 		<li><a href="#Contact" class="text-apb-y text-lg font-semibold hover:underline">Contact</a></li>
 	</ul>
 </nav>
-
-<style>
-    html {
-        scroll-behavior: smooth;
-    }
-</style>
