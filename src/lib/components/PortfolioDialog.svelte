@@ -23,13 +23,15 @@
 
 			<div class="grid grid-cols-1 md:grid-cols-2 pt-12 md:pt-0">
 				<!-- Image section -->
-				<div class="relative h-64 md:h-auto">
+				<div class="relative h-[100%] md:h-auto">
 					{#if imageUrl}
-						<img
-							src={imageUrl}
-							alt={title}
-							class="h-full w-full object-cover"
-						/>
+						<div class="flex items-center justify-center p-5 h-full w-full">
+							<img
+								src={imageUrl}
+								alt={title}
+								class="w-auto h-auto max-h-[400px] max-w-full object-contain"
+							/>
+						</div>
 					{:else}
 						<div class="flex items-center justify-center h-full w-full bg-apb-b text-apb-y">
 							<span class="text-xl font-bold">{title}</span>

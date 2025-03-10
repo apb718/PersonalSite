@@ -7,12 +7,14 @@
 			content: "Chicago Raw Food",
 			size: "1x2",
 			color: "bg-apb-y",
+
 			className: "",
 			itemData: {
 				title: "Chicago Raw Food",
-				description: "A web application for a Chicago-based raw food delivery service. Features include online ordering, subscription management, and nutritional information.",
-				technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe"],
-				link: "#",
+				description: "A website for a Chicago-based raw food company. Features include online ordering, nutritional information, and a backend to support order management and changes.",
+				technologies: ["Sveltekit", "HTML/CSS/JS/TS", "Vercel", "tailwind", "Stripe", "MySQL"],
+				imageUrl: "src/lib/assets/images/raw.webp",
+				link: "https://chicago-raw-food.vercel.app/",
 			}
 		},
 		{
@@ -24,18 +26,20 @@
 				title: "CME Group",
 				description: "Worked as part of the team developing financial market data visualization tools and trading platforms for CME Group, one of the world's leading derivatives marketplaces.",
 				technologies: ["TypeScript", "Angular", "D3.js", "Java", "Spring Boot"],
-				link: "#",
+				imageUrl: "src/lib/assets/images/CME.webp",
+				// link: "#",
 			}
 		},
 		{
 			content: "Theta Tau Website",
 			size: "2x1",
-			color: "bg-apb-y",
-			className: "",
+			color: "bg-apb-b",
+			className: "text-white",
 			itemData: {
 				title: "Theta Tau Website",
-				description: "Redesigned and developed the website for Theta Tau, the professional engineering fraternity at my university. Implemented member management and event scheduling features.",
-				technologies: ["Svelte", "SvelteKit", "TailwindCSS", "Supabase"],
+				description: "Redesigned and developed the website for Theta Tau, the professional engineering fraternity at my university. Implemented CI/CD pipelines for preview, and focused on modifying to make site more maintainable. This primarly regarding rebuilding towrads a component architecture.",
+				technologies: ["HTML/CSS/JS", "Firebase", "Github Actions", "Code Quality Assurance"],
+				imageUrl: "src/lib/assets/images/thetatau.webp",
 				link: "#",
 			}
 		},
@@ -49,6 +53,7 @@
 				description: "A collection of academic projects completed during my computer science program, including assignments in data structures, algorithms, machine learning, and web development.",
 				technologies: ["Python", "Java", "C++", "TensorFlow", "React"],
 				link: "#",
+				imageUrl: "src/lib/assets/images/miami.webp",
 			}
 		}
 	];
@@ -66,6 +71,7 @@
 					content={item.content}
 					className={item.className}
 					itemData={item.itemData}
+					imageUrl={item.imageUrl || null}
 				/>
 			{/each}
 		</div>

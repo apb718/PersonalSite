@@ -15,6 +15,7 @@
 		color = 'bg-apb-b',
 		className = '',
 		content = "",
+		imageUrl = null,
 		// Add the portfolio item details
 		itemData = {} as PortfolioItemData
 	} = $props();
