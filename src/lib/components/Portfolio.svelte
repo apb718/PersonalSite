@@ -12,7 +12,7 @@
 			itemData: {
 				title: "Chicago Raw Food",
 				description: "A website for a Chicago-based raw food company. Features include online ordering, nutritional information, and a backend to support order management and changes.",
-				technologies: ["Sveltekit", "HTML/CSS/JS/TS", "Vercel", "tailwind", "Stripe", "MySQL"],
+				technologies: ["Sveltekit", "Full-Stack Development", "Shadcn", "HTML/CSS/JS/TS", "Vercel", "tailwind", "Stripe", "MySQL"],
 				imageUrl: "src/lib/assets/images/raw.webp",
 				link: "https://chicago-raw-food.vercel.app/",
 			}
@@ -24,8 +24,8 @@
 			className: "text-white",
 			itemData: {
 				title: "CME Group",
-				description: "Worked as part of the team developing financial market data visualization tools and trading platforms for CME Group, one of the world's leading derivatives marketplaces.",
-				technologies: ["TypeScript", "Angular", "D3.js", "Java", "Spring Boot"],
+				description: "Worked on a team of field engineers who manage and maintain servers for CME Group's high-frequency trading servers.  Companies included are 3Red, Jump, Akuna Capital, and international clients.",
+				technologies: ["Hardware Troubleshooting", "HFT Server Management", "Linux CLI", "Customer Service", "Networking"],
 				imageUrl: "src/lib/assets/images/CME.webp",
 				// link: "#",
 			}
@@ -50,8 +50,8 @@
 			className: "",
 			itemData: {
 				title: "Course Work",
-				description: "A collection of academic projects completed during my computer science program, including assignments in data structures, algorithms, machine learning, and web development.",
-				technologies: ["Python", "Java", "C++", "TensorFlow", "React"],
+				description: "A collection of projects developed during my 3 years at Miami University.  Includes projects in C++, Python, and Java often revolving around creating maintainable code that is easy to read and understand.  Core ideas include OOP, data structures, algorithms, and data representation.",
+				technologies: ["Java", "Python", "C++", "OOP", "Scikit-learn", "HPC", "Distributed Computing", "Networking", "Troubleshooting", "SDLC", "Docker", "DLV/Prolog" ],
 				link: "#",
 				imageUrl: "src/lib/assets/images/miami.webp",
 			}
